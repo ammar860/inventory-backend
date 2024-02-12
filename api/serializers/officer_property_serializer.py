@@ -11,7 +11,7 @@ class OfficerPropertySerializer(serializers.ModelSerializer):
         model = OfficerProperty
         fields = (
             'id', 'name', 'house_no', 'loc', 'unit', 'image', 'maintenance', 'created_at', 'updated_at', 'created_by',
-            'updated_by'
+            'type', 'updated_by'
         )
         read_only_fields = (
             'created_at', 'updated_at', 'maintenance'
