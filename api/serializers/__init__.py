@@ -6,3 +6,7 @@ from .logout_serializer import LogoutSerializer
 from .refresh_serializer import RefreshSerializer
 from .officer_property_serializer import OfficerPropertySerializer
 from .officer_maintenance_serializer import OfficerMaintenanceSerializer
+from .soldier_property_serializer import SoldierPropertySerializer
+from .non_residential_property_serializer import NonResidentialPropertySerializer
+from .soldier_maintenance_serializer import SoldierMaintenanceSerializer
+from .non_resdential_maintenance_serializer import NonResidentialMaintenanceSerializer

@@ -8,7 +8,11 @@ routers.register('roles', views.RoleViewSet, basename='role')
 routers.register('users', views.UserViewSet, basename='user')
 routers.register('officer-properties', views.OfficerPropertyViewSet, basename='officer-property')
 routers.register('officer-maintenances', views.OfficerMaintenanceViewSet, basename='officer-maintenance')
-
+routers.register('soldier-properties', views.SoldierPropertyViewSet, basename='soldier-property')
+routers.register('soldier-maintenances', views.SoldierMaintenanceViewSet, basename='soldier-maintenance')
+routers.register('non-residential-properties', views.NonResidentialPropertyViewSet, basename='non-residential-property')
+routers.register('non-residential-maintenances', views.NonResidentialMaintenanceViewSet,
+                 basename='non-residential-maintenance')
 
 urlpatterns = [
     path('login', views.LoginView.as_view()),

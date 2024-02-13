@@ -3,3 +3,7 @@ from .role import Role
 from .permission import Permission
 from .officer_property import OfficerProperty
 from .officer_maintenance import OfficerMaintenance
+from .soldier_property import SoldierProperty
+from .non_residential_property import NonResidentialProperty
+from .soldier_maintenance import SoldierMaintenance
+from .non_residential_maintenance import NonResidentialMaintenance

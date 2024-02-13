@@ -7,3 +7,7 @@ from .refresh_view import RefreshView
 from .user_viewset import UserViewSet
 from .officer_property_viewset import OfficerPropertyViewSet
 from .officer_maintenance_viewset import OfficerMaintenanceViewSet
+from .soldier_property_viewset import SoldierPropertyViewSet
+from .soldier_maintenance_viewset import SoldierMaintenanceViewSet
+from .non_residential_property_viewset import NonResidentialPropertyViewSet
+from .non_residential_maintenance_viewset import NonResidentialMaintenanceViewSet
