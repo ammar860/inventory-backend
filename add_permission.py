@@ -107,6 +107,10 @@ permissions = [
                module_name='Non_Residential_Maintenance',
                description='User can Delete Non Residential maintenance'),
 
+    Permission(name='Show Dashboard', code_name='dashboard_show',
+               module_name='Dashboard_Show',
+               description='User can Show Dashboard'),
+
 ]
 
 
