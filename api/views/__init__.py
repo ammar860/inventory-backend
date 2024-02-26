@@ -11,3 +11,4 @@ from .soldier_property_viewset import SoldierPropertyViewSet
 from .soldier_maintenance_viewset import SoldierMaintenanceViewSet
 from .non_residential_property_viewset import NonResidentialPropertyViewSet
 from .non_residential_maintenance_viewset import NonResidentialMaintenanceViewSet
+from .dashboard_view import DashboardView

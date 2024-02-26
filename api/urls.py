@@ -20,6 +20,7 @@ urlpatterns = [
     path('refresh', views.RefreshView.as_view()),
     path('current', views.CurrentUserView.as_view()),
     path('permissions', views.PermissionListView.as_view()),
+    path('dashboard', views.DashboardView.as_view())
 ]
 
 urlpatterns += routers.urls
