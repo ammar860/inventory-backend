@@ -17,7 +17,6 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -27,8 +26,7 @@ SECRET_KEY = 'django-insecure-@(pphrjggv^y1o75x*0v7-2ml!^_xe__4eg0^ev*)y_$&6ujf0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "agbranchtms.met.af", "agbranchportal.met.af"]
-
+ALLOWED_HOSTS = ["127.0.0.1:8000","localhost", "agbranchtms.met.af", "agbranchportal.met.af"]
 
 # Application definition
 
@@ -65,7 +63,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
+    "http://127.0.0.1:8000","http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -75,7 +73,9 @@ ROOT_URLCONF = 'tms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, './static')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.static'
             ],
         },
     },
@@ -90,12 +91,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tms.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-'default': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
@@ -108,8 +108,6 @@ DATABASES = {
     #     'PORT': '5432',
     # },
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -129,7 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -141,11 +138,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, './static')
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, './static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, './media')
 MEDIA_URL = '/inventory/media/'
@@ -197,16 +196,15 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_HTTP_ONLY': False,  # Http only cookie flag.It's not fetch by javascript.
     'AUTH_COOKIE_PATH': '/',  # The path of the auth cookie.
     'AUTH_COOKIE_SAMESITE': 'Lax',  # Whether to set the flag restricting cookie leaks on cross-site requests.
-                                    # This can be 'Lax', 'Strict', or None to disable the flag.
+    # This can be 'Lax', 'Strict', or None to disable the flag.
 }
 
 CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_HTTPONLY = False
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8080","http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
+    'http://127.0.0.1:8000',"http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -217,4 +215,3 @@ LDAP_IP = '10.33.29.11'
 LDAP_DOMAIN = 'met.af'
 
 SILENCED_SYSTEM_CHECKS = ['auth.E003', 'auth.W004']
-
