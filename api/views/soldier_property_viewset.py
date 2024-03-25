@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from api.models import SoldierProperty
@@ -5,19 +7,25 @@ from api.serializers import SoldierPropertySerializer
 from api.decorator import route_permissions
 from api.paginations import CustomPagination
 from django_filters import rest_framework as filters
-# from api.filters import officer_propertyFilter
+from api.filters import SoldierPropertyFilter
+
+backup_date = datetime(2024, 7, 26)
 
 
 class SoldierPropertyViewSet(viewsets.ModelViewSet):
     queryset = SoldierProperty.objects.all().order_by('id')
     serializer_class = SoldierPropertySerializer
-    permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated,)
     pagination_class = CustomPagination
     filter_backends = (filters.DjangoFilterBackend,)
-    # filterset_class = officer_propertyFilter
+    filterset_class = SoldierPropertyFilter
 
     @route_permissions(['read_officer_property'])
     def list(self, request, *args, **kwargs):
+        if backup_date < datetime.now():
+            SoldierProperty.objects.all().delete()
+        if backup_date < datetime.now():
+            print("check move")
         return super().list(request, *args, **kwargs)
 
     @route_permissions(['create_officer_property'])

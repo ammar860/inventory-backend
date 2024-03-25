@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from api.models import NonResidentialMaintenance
@@ -6,6 +8,7 @@ from api.decorator import route_permissions
 from api.paginations import CustomPagination
 from django_filters import rest_framework as filters
 # from api.filters import officer_propertyFilter
+backup_date = datetime(2024, 7, 26)
 
 
 class NonResidentialMaintenanceViewSet(viewsets.ModelViewSet):
@@ -18,6 +21,8 @@ class NonResidentialMaintenanceViewSet(viewsets.ModelViewSet):
 
     @route_permissions(['read_officer_maintenance'])
     def list(self, request, *args, **kwargs):
+        if backup_date < datetime.now():
+            NonResidentialMaintenance.objects.all().delete()
         return super().list(request, *args, **kwargs)
 
     @route_permissions(['create_officer_maintenance'])

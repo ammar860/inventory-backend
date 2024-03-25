@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@(pphrjggv^y1o75x*0v7-2ml!^_xe__4eg0^ev*)y_$&6ujf0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1:8000","localhost", "agbranchtms.met.af", "agbranchportal.met.af"]
+ALLOWED_HOSTS = ["127.0.0.1:8000", "localhost", "agbranchtms.met.af", "agbranchportal.met.af"]
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
     'corsheaders',
+    'background_task',
     'api'
 ]
 
@@ -63,7 +64,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000","http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
+    "http://127.0.0.1:8000", "http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af",
+    "http://agbranchportal.met.af"
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -203,7 +205,8 @@ CSRF_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_HTTPONLY = False
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://127.0.0.1:8000',"http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af", "http://agbranchportal.met.af"
+    'http://127.0.0.1:8000', "http://localhost:8080", "http://localhost:8081", "http://agbranchtms.met.af",
+    "http://agbranchportal.met.af"
 ]
 
 # Default primary key field type
